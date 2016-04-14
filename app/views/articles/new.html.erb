@@ -1,0 +1,12 @@
+<div style="width:80%; margin: 0 auto;">
+  <h1>Crear Artículo</h1>
+  <%= form_for(@article) do |f| %>
+    <div class="field">
+      <%= f.text_field :title, placeholder: "Título", class:"form-control"  %>
+    </div>
+    <div class="field">
+      <%= f.text_area :body, placeholder: "Escribe aquí el artículo", style:"height:250px", class:"form-control"  %>
+    </div>
+    <%= f.submit "Guardar", class:"btn"  %>
+  <%end%>
+</div>
