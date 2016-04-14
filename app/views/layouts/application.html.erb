@@ -2,13 +2,26 @@
 <html>
 <head>
   <title>Blog</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <header class="be_red">
+    <nav class="white">
+      <ul class="row center-xs middle-xs">
+        <li class="col-md logo"><h1>Blog Beto</h1></li>
+        <li class="col-md"><%= link_to  "Inicio", root_path %></li>
+        <li class="col-md">Diseño</li>
+        <li class="col-md">Programación</li>
+        <li class="col-md">Técnologia</li>
+      </ul>
+    </nav>
+  </header>
+
+  <%= yield %>
 
 </body>
 </html>
