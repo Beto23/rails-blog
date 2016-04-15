@@ -1,4 +1,9 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show] #metodo de devise para validar usuario
+  #before_action :validate_user, except: [:show, :index] #metodo de ruby para validar usuario
+
+  before_action :set_article, except: [:index, :new, :create]
+
   #GET /articles
   def index
     # Obtiene todos los registros SELECT * FROM articles
@@ -7,10 +12,7 @@ class ArticlesController < ApplicationController
 
   #GET /articles/:id
   def show
-    #Encuentra un registro por id
-    @article = Article.find(params[:id])
-    #where
-    #Article.where.not("id = ?", params[:id])
+    @article.update_visits_count
   end
 
   #GET /article/new
@@ -33,20 +35,17 @@ class ArticlesController < ApplicationController
   #DELETE /articles/:id
   def destroy
     #DELETE FROM articles
-    @article = Article.find(params[:id])
     @article.destroy #destroy elimina el objeto de la base de datos
     redirect_to articles_path
   end
 
   def edit
-    @article = Article.find(params[:id])
+
   end
 
   def update
     #UPDATE
     #@article.update_attributes({title: 'Nuevo titulo'})
-    @article = Article.find(params[:id])
-
     if @article.update(article_params)
       redirect_to @article
     else
@@ -56,6 +55,13 @@ class ArticlesController < ApplicationController
 
   private
 
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
+  def validate_user
+    redirect_to new_user_session_path, notice: "Necesitas iniciar sesión"
+  end
   def article_params
     #Este método solo permite insertar los campos title y body a la base de datos
     #El campo visit_counts no es permitido, con esto nuestra app es segura
