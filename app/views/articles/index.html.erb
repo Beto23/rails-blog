@@ -1,6 +1,12 @@
-<% @articles.each do |article|  %>
-  <h1><%= article.title  %></h1>
-  <div>
-    <%= article.body  %> - <%= link_to "Eliminar", article, method: :delete %>
+<div class="container-articles">
+  <% @articles.each do |article|  %>
+  <div class="container-articles-article">
+    <h1><%=article.title%></h1>
+    <div>
+      <p>
+        <%= article.body  %> - <%= link_to "Eliminar", article, method: :delete %>
+      </p>
+    </div>
   </div>
-<% end  %>
+  <% end  %>
+</div>
