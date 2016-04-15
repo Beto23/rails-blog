@@ -38,6 +38,22 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    #UPDATE
+    #@article.update_attributes({title: 'Nuevo titulo'})
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :edit
+    end
+  end
+
   private
 
   def article_params
