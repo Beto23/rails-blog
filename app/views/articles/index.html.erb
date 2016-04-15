@@ -1,10 +1,10 @@
 <div class="container-articles">
   <% @articles.each do |article|  %>
   <div class="container-articles-article">
-    <h1><%=article.title%></h1>
+    <h1><%= link_to article.title, article %></h1>
     <div>
       <p>
-        <%= article.body  %> - <%= link_to "Eliminar", article, method: :delete %>
+        <%= article.body  %> - <%= link_to "Eliminar", article, method: :delete, class:"red" %>
       </p>
     </div>
   </div>
