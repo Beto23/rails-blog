@@ -1,0 +1,16 @@
+<header class="be_red">
+  <nav class="white">
+    <ul class="row center-xs middle-xs">
+      <li class="col-md logo"><h1>Blog Beto</h1></li>
+      <li class="col-md"><%= link_to  "Inicio", root_path %></li>
+      <li class="col-md">Diseño</li>
+      <li class="col-md">Programación</li>
+      <li class="col-md">Técnologia</li>
+      <% if user_signed_in? %>
+        <li class="col-md">
+          <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
+        </li>
+      <%end %>
+    </ul>
+  </nav>
+</header>
